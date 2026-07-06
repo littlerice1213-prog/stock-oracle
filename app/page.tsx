@@ -896,7 +896,7 @@ export default function Home() {
     </div>
 
     <button
-      onClick={() => setStage("ad")}
+      onClick={() => setStage("reading")}
       className="rounded-full bg-yellow-500 px-10 py-4 font-bold text-black transition hover:bg-yellow-400"
     >
       ✨ 觀看股市解卦神諭
