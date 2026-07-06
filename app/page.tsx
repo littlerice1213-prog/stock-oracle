@@ -669,20 +669,27 @@ export default function Home() {
 
   if (stage === "home") {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center bg-black px-6 text-center text-white">
+      <main className="flex min-h-screen flex-col items-center justify-center bg-black px-6 pt-16 text-center text-white">
         <p className="mb-4 tracking-[0.4em] text-yellow-500">
           STOCK ORACLE
         </p>
 
         <h1 className="mb-6 text-5xl font-bold text-yellow-300">
-          股市六爻神諭
-        </h1>
+  股市六爻神諭
+</h1>
 
-        <p className="mb-10 max-w-md text-lg leading-8 text-zinc-300">
-          請專心想著想占問的股票標的，
-          <br />
-          準備好後，按下擲幣按鍵 6 次完成起卦。
-        </p>
+<p className="mb-10 max-w-xl text-sm leading-7 text-amber-100/70">
+  本工具以易經卦象作為娛樂與個人研究參考，
+  <br />
+  內容不構成任何投資建議，投資決策請自行評估風險。
+</p>
+
+<p className="mb-12 max-w-md text-lg leading-8 text-zinc-300">
+  請專心想著想占問的股票標的，
+  <br />
+  準備好後，按下擲幣按鍵 6 次完成起卦。
+</p>
+
 
         <button
           onClick={() => setStage("divination")}
