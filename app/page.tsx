@@ -843,49 +843,66 @@ export default function Home() {
         </button>
       )}
 
-      <div className="w-full max-w-md space-y-4">
-        {[5, 4, 3, 2, 1, 0].map((index) => {
-          const result = lines[index];
+      {lines.length < 6 ? (
+  <div className="w-full max-w-md space-y-4">
+    {[5, 4, 3, 2, 1, 0].map((index) => {
+      const result = lines[index];
 
-          return (
-            <div
-              key={index}
-              className="rounded-2xl border border-yellow-500 px-6 py-5"
-            >
-              <span className="text-xl text-yellow-300">
-                第 {index + 1} 爻
-              </span>
+      return (
+        <div
+          key={index}
+          className="rounded-2xl border border-yellow-500 px-6 py-5"
+        >
+          <span className="text-xl text-yellow-300">
+            第 {index + 1} 爻
+          </span>
 
-              <span className="ml-5 text-xl">
-                {result
-                  ? result.line === "陽爻"
-                    ? "━━━━━━"
-                    : "━━━　━━━"
-                  : "尚未擲幣"}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-
-      {lines.length === 6 && (
-        <div className="mt-10 w-full max-w-md">
-          <p className="mb-3 text-zinc-400">
-            你得到的是
-          </p>
-
-          <p className="mb-8 text-4xl font-bold text-yellow-300">
-            {hexagram?.name ?? "卦名資料尚未建立"}
-          </p>
-
-          <button
-            onClick={() => setStage("ad")}
-            className="rounded-full bg-yellow-500 px-10 py-4 font-bold text-black transition hover:bg-yellow-400"
-          >
-            ✨ 觀看股市解卦神諭
-          </button>
+          <span className="ml-5 text-xl">
+            {result
+              ? result.line === "陽爻"
+                ? "━━━━━━"
+                : "━━━　━━━"
+              : "尚未擲幣"}
+          </span>
         </div>
-      )}
+      );
+    })}
+  </div>
+) : (
+  <div className="w-full max-w-md">
+    <p className="mb-4 text-lg text-zinc-400">
+      你得到的是
+    </p>
+
+    <p className="mb-6 text-4xl font-bold text-yellow-300">
+      {hexagram?.name ?? "卦名資料尚未建立"}
+    </p>
+
+    <div className="mx-auto mb-8 flex w-full max-w-[220px] flex-col gap-3">
+      {[5, 4, 3, 2, 1, 0].map((index) => {
+        const result = lines[index];
+
+        return (
+          <div
+            key={index}
+            className="text-3xl leading-none text-yellow-100"
+          >
+            {result?.line === "陽爻"
+              ? "━━━━━━"
+              : "━━━　━━━"}
+          </div>
+        );
+      })}
+    </div>
+
+    <button
+      onClick={() => setStage("ad")}
+      className="rounded-full bg-yellow-500 px-10 py-4 font-bold text-black transition hover:bg-yellow-400"
+    >
+      ✨ 觀看股市解卦神諭
+    </button>
+  </div>
+)}
 
       <style jsx global>{`
         .coin-toss {
