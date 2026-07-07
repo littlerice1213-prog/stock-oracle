@@ -44,15 +44,21 @@ export default function DisclaimerPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-xl font-bold text-yellow-300">
-              使用者自行決策
-            </h2>
+            <h2 className="mt-10 text-2xl font-bold text-yellow-300">
+  非專業投資顧問聲明
+</h2>
 
-            <p>
-              使用者應自行判斷並承擔其投資決策及交易結果。
-              因使用或參考本站內容所產生的任何直接或間接損失，
-              應由使用者自行承擔。
-            </p>
+<p className="mt-4 text-zinc-200 leading-8">
+  本站並非證券投資顧問、財務顧問或任何金融服務機構，亦未提供個別化投資建議、買賣指示或資產配置建議。使用者如有投資需求，應諮詢合格專業人士。
+</p>
+
+<h2 className="mt-10 text-2xl font-bold text-yellow-300">
+  內容限制
+</h2>
+
+<p className="mt-4 text-zinc-200 leading-8">
+  本站內容可能因資料整理、文字解讀或系統顯示而產生誤差，所有卦象結果與文字解析僅供參考，本站不保證內容即時性、正確性、完整性或適用性。
+</p>
           </section>
 
           <section>
@@ -69,7 +75,7 @@ export default function DisclaimerPage() {
           </section>
 
           <p className="border-t border-zinc-800 pt-6 text-sm text-zinc-500">
-            使用本站即表示您已閱讀並理解本免責聲明。
+            使用本站即表示您已閱讀、理解並同意本免責聲明之內容。
           </p>
         </div>
       </section>
