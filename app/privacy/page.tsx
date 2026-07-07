@@ -36,7 +36,9 @@ export default function PrivacyPage() {
               本站目前不要求使用者註冊帳號，
               也不要求使用者輸入所占問的股票名稱或個人財務資訊。
             </p>
-
+<p>
+  本站不會主動販售、出租或交換使用者的個人資料予第三方。
+</p>
             <p className="mt-3">
               為維持網站運作、分析流量及改善使用體驗，
               網站服務或第三方服務可能自動取得部分技術資訊，
@@ -65,12 +67,16 @@ export default function PrivacyPage() {
             </h2>
 
             <p>
-              本站未來可能使用 Google AdSense
-              或其他第三方廣告服務。
-              第三方廣告服務供應商可能使用 Cookie
-              或其他技術，依據使用者造訪本站或其他網站的情形，
-              提供、衡量及改善廣告內容。
-            </p>
+  本站未來可能使用 Google AdSense
+  或其他第三方廣告服務。
+  第三方廣告服務供應商可能使用 Cookie
+  或其他技術，依據使用者造訪本站或其他網站的情形，
+  提供、衡量及改善廣告內容。
+</p>
+
+<p>
+  Google 等第三方廣告供應商可能會使用 Cookie，根據使用者過去造訪本站或其他網站的情形提供個人化或非個人化廣告。使用者可透過 Google 廣告設定管理個人化廣告偏好，或透過瀏覽器設定管理 Cookie。
+</p>
           </section>
 
           <section>
@@ -87,15 +93,25 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-xl font-bold text-yellow-300">
-              五、政策更新
-            </h2>
+  <section>
+  <h2 className="mb-3 text-xl font-bold text-yellow-300">
+    五、聯絡方式
+  </h2>
 
-            <p>
-              本站可能因服務內容、技術或相關規範變更，
-              適時更新本隱私權政策。
-              更新後的內容將公布於本頁面。
-            </p>
+  <p>
+    如對本隱私權政策有任何疑問，可透過本站「聯絡我們」頁面與站方聯繫。
+  </p>
+
+ <h2 className="mt-10 mb-3 text-xl font-bold text-yellow-300">
+  六、政策更新
+</h2>
+
+  <p>
+    本站可能因服務內容、技術或相關規範變更，
+    適時更新本隱私權政策。
+    更新後的內容將公布於本頁面。
+  </p>
+</section>
           </section>
 
           <p className="border-t border-zinc-800 pt-6 text-sm text-zinc-500">
