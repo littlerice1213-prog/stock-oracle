@@ -738,12 +738,20 @@ export default function Home() {
   }
 
   if (stage === "reading") {
-    return (
-      <main className="flex min-h-screen flex-col items-center bg-black px-6 py-14 text-white">
-        <div className="w-full max-w-xl">
-          <p className="mb-4 text-center tracking-[0.4em] text-yellow-500">
-            STOCK ORACLE
-          </p>
+  return (
+    <main className="relative flex min-h-screen flex-col items-center bg-black px-6 py-14 text-white">
+      <div className="pointer-events-none fixed inset-0 z-20 flex items-center justify-center opacity-[0.05]">
+        <div className="-rotate-12 text-center text-3xl font-bold tracking-widest text-yellow-300 sm:text-5xl">
+          股市六爻神諭 · 鮮菇老師
+          <br />
+          僅供娛樂與研究參考
+        </div>
+      </div>
+
+      <div className="relative z-10 w-full max-w-xl">
+    <p className="mb-4 text-center tracking-[0.4em] text-yellow-500">
+      STOCK ORACLE
+    </p>
 
           <h1 className="mb-3 text-center text-2xl font-bold text-zinc-300">
             股市六爻神諭
@@ -864,13 +872,13 @@ export default function Home() {
             第 {index + 1} 爻
           </span>
 
-          <span className="ml-5 text-xl">
-            {result
-              ? result.line === "陽爻"
-                ? "━━━━━━"
-                : "━━━　━━━"
-              : "尚未擲幣"}
-          </span>
+         <span className="ml-5 text-xl">
+  {result
+    ? result.line === "陽爻"
+      ? "━━━━━"
+      : "━━　━━"
+    : "尚未擲幣"}
+</span>
         </div>
       );
     })}
@@ -885,22 +893,27 @@ export default function Home() {
       {hexagram?.name ?? "卦名資料尚未建立"}
     </p>
 
-    <div className="mx-auto mb-8 flex w-full max-w-[220px] flex-col gap-3">
-      {[5, 4, 3, 2, 1, 0].map((index) => {
-        const result = lines[index];
+   <div className="mx-auto mb-8 flex w-full max-w-[320px] flex-col gap-4">
+  {[5, 4, 3, 2, 1, 0].map((index) => {
+    const result = lines[index];
 
-        return (
-          <div
-            key={index}
-            className="text-3xl leading-none text-yellow-100"
-          >
-            {result?.line === "陽爻"
-              ? "━━━━━━"
-              : "━━━　━━━"}
+    return (
+      <div
+        key={index}
+        className="mx-auto flex h-5 w-full items-center justify-center"
+      >
+        {result?.line === "陽爻" ? (
+          <div className="h-1.5 w-full rounded-full bg-yellow-100" />
+        ) : (
+          <div className="flex w-full items-center justify-between">
+            <div className="h-1.5 w-[42%] rounded-full bg-yellow-100" />
+            <div className="h-1.5 w-[42%] rounded-full bg-yellow-100" />
           </div>
-        );
-      })}
-    </div>
+        )}
+      </div>
+    );
+  })}
+</div>
 
     <button
       onClick={() => setStage("reading")}
