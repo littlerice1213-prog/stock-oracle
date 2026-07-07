@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "股市六爻神諭占卜",
   description: "以易經六爻卦象提供股市投資靈感參考，僅供娛樂與個人判斷輔助，不構成投資建議。",
+  other: {
+    "google-adsense-account": "ca-pub-6565823960984236",
+  },
 };
 
 export default function RootLayout({
