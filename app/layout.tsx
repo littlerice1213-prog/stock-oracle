@@ -13,8 +13,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "股市六爻神諭占卜",
-  description: "以易經六爻卦象提供股市投資靈感參考，僅供娛樂與個人判斷輔助，不構成投資建議。",
+  metadataBase: new URL("https://stock-oracle-murex.vercel.app"),
+  title: "股市六爻神諭｜免費線上易經占卜",
+  description:
+    "擲幣六次，依易經六十四卦探索手中持股的市場啟示。僅供娛樂與個人判斷輔助，不構成投資建議。",
+  openGraph: {
+    title: "股市六爻神諭｜免費線上易經占卜",
+    description:
+      "擲幣六次，依易經六十四卦探索手中持股的市場啟示。",
+    url: "https://stock-oracle-murex.vercel.app",
+    siteName: "股市六爻神諭",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "股市六爻神諭",
+      },
+    ],
+    locale: "zh_TW",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "股市六爻神諭｜免費線上易經占卜",
+    description:
+      "擲幣六次，依易經六十四卦探索手中持股的市場啟示。",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
