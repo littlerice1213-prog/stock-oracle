@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SiteFooter from "./components/SiteFooter";
 
 type CoinFace = "ingot" | "ten";
@@ -618,7 +618,36 @@ export default function Home() {
   const [lastResult, setLastResult] =
     useState<LineResult | null>(null);
   const [isTossing, setIsTossing] = useState(false);
+  const [isZiRestTime, setIsZiRestTime] = useState(false);
 
+  useEffect(() => {
+  const checkZiRestTime = () => {
+    const now = new Date();
+    const hour = now.getHours();
+
+    setIsZiRestTime(hour === 23 || hour === 0);
+  };
+
+  checkZiRestTime();
+  const timer = setInterval(checkZiRestTime, 30000);
+
+  return () => clearInterval(timer);
+}, []);
+const handleStartDivination = () => {
+  const now = new Date();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+
+  if (hour === 22 && minute >= 55) {
+    const shouldContinue = window.confirm(
+      "殘念!!! 即將進入子時休卦時段，23:00 後將無法起卦占問。\n\n是否仍要繼續？"
+    );
+
+    if (!shouldContinue) return;
+  }
+
+  setStage("divination");
+};
   const currentLine = lines.length + 1;
 
   // 起卦順序：第 1 爻 → 第 6 爻
@@ -666,7 +695,54 @@ export default function Home() {
       resetDivination();
     }
   };
+if (stage === "home" && isZiRestTime) {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center bg-black px-6 pt-20 text-center text-white">
+      <p className="mb-4 tracking-[0.4em] text-yellow-500">
+        STOCK ORACLE
+      </p>
+<p className="mb-3 text-5xl font-bold text-yellow-300">
+  股市六爻神諭
+</p>
+      <h1 className="mb-8 text-4xl font-bold text-yellow-300">
+        子時休卦
+      </h1>
 
+      <div className="mb-10 max-w-md space-y-4 text-lg leading-8 text-zinc-300">
+        <p>
+          此刻正值子時，天地陰陽交替，
+          <br />
+          氣場能量尚未安定。
+        </p>
+<div className="my-6 flex justify-center">
+  <Image
+    src="/taiji-bagua.jpg"
+    alt="太極八卦圖"
+    width={300}
+    height={300}
+    priority
+ className="h-40 w-40 animate-[spin_25s_linear_infinite,taijiGlow_4s_ease-in-out_infinite] rounded-full object-cover"
+  />
+</div>
+        <p>
+          為避免影響卦象判讀，
+          <br />
+          本站於每日 23:00 至翌日 01:00 暫停起卦。
+        </p>
+      </div>
+
+      <p className="text-xl font-bold text-yellow-300">
+        今天先別問了，早點睡，明天一樣累哈 ㄎㄎ
+        <br />
+        歡迎明早睡飽飽 再來占問喔。
+         <br />
+         祝好眠Zzzzz
+      </p>
+
+      <SiteFooter />
+    </main>
+  );
+}
   if (stage === "home") {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center bg-black px-6 pt-16 text-center text-white">
@@ -692,11 +768,16 @@ export default function Home() {
 
 
         <button
-          onClick={() => setStage("divination")}
-          className="rounded-full bg-yellow-500 px-10 py-4 font-bold text-black transition hover:bg-yellow-400"
-        >
-          開始占問
-                </button>
+  onClick={handleStartDivination}
+  disabled={isZiRestTime}
+  className={`rounded-full px-10 py-4 font-bold text-black transition ${
+    isZiRestTime
+      ? "cursor-not-allowed bg-zinc-600 text-zinc-300"
+      : "bg-yellow-500 hover:bg-yellow-400"
+  }`}
+>
+  {isZiRestTime ? "子時休卦中" : "開始占卜"}
+</button>
 
         <SiteFooter />
       </main>
@@ -977,6 +1058,20 @@ export default function Home() {
               rotateZ(0deg) scale(1);
           }
         }
+
+  @keyframes taijiGlow {
+  0% {
+    filter: drop-shadow(0 0 12px rgba(234, 179, 8, 0.3));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 60px rgba(234, 179, 8, 0.9));
+  }
+
+  100% {
+    filter: drop-shadow(0 0 12px rgba(234, 179, 8, 0.3));
+  }
+}
            `}</style>
 
       <SiteFooter />
